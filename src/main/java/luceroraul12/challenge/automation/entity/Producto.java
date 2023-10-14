@@ -21,6 +21,6 @@ public class Producto {
 	@Column
 	private Double precio;
 	@ManyToOne
-	@JoinColumn(columnDefinition = "id_tipo_producto")
+	@JoinColumn(name = "id_tipo_producto")
 	private TipoProducto tipoProducto;
 }
