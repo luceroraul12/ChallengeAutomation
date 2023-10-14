@@ -2,13 +2,6 @@ package luceroraul12.challenge.automation.service;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-
-import jakarta.websocket.server.PathParam;
 import luceroraul12.challenge.automation.dto.ProductoDto;
 import luceroraul12.challenge.automation.dto.ProductoStock;
 
