@@ -14,6 +14,7 @@ public class ProductoConverter {
 		dto.setId(p.getId());
 		dto.setNombre(p.getNombre());
 		dto.setPrecio(p.getPrecio());
+		dto.setTipo(p.getTipoProducto().getDescripcion());
 		return dto;
 	}
 	

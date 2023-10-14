@@ -10,4 +10,5 @@ public class ProductoDto {
 	private Integer id;
 	private String nombre;
 	private Double precio;
+	private String tipo;
 }
