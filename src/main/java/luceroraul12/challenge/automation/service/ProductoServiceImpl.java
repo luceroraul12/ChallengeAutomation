@@ -2,9 +2,12 @@ package luceroraul12.challenge.automation.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import luceroraul12.challenge.automation.dto.ProductoDto;
 import luceroraul12.challenge.automation.dto.ProductoStock;
 
+@Service
 public class ProductoServiceImpl implements ProductoService{
 
 	@Override
