@@ -40,6 +40,22 @@ create or replace trigger producto_nuevo_stock_tr
 	for each row
 	execute procedure fn_producto_nuevo_stock();
 
+-- Delego la actividad de eliminar la instancia de stock a la base de datos
+create or replace function fn_producto_eliminar_stock()
+	returns trigger 
+	language plpgsql
+as $$
+begin 
+	delete from stock where id_producto = old.id;
+	return old;
+end $$;
+
+create or replace trigger producto_eliminar_stock_tr
+	before delete 
+		on producto
+	for each row
+	execute procedure fn_producto_eliminar_stock();
+
 ---- View de stock
 create view vw_stock_producto as 
 	select 
