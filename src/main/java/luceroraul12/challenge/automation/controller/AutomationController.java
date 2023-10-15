@@ -32,17 +32,17 @@ public class AutomationController {
 	}
 	
 	@PostMapping("/producto")
-	public ProductoDto crearProducto(@RequestBody ProductoDto dto) {
+	public ProductoDto crearProducto(@RequestBody ProductoDto dto) throws Exception {
 		return service.crearProducto(dto);
 	}
 	
 	@PutMapping("/producto")
-	public ProductoDto actualizarProducto(@RequestBody ProductoDto dto) {
+	public ProductoDto actualizarProducto(@RequestBody ProductoDto dto) throws Exception {
 		return service.actualizarProducto(dto);
 	}
 
 	@DeleteMapping("/producto/{idProducto}")
-	public Integer eliminarProducto(@PathParam(value = "idProducto") Integer idProducto) {
+	public Integer eliminarProducto(@PathParam(value = "idProducto") Integer idProducto) throws Exception {
 		return service.eliminarProducto(idProducto);
 	}
 	
