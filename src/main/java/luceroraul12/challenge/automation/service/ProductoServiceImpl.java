@@ -6,9 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import luceroraul12.challenge.automation.converter.ProductoConverter;
+import luceroraul12.challenge.automation.converter.TipoProductoConverter;
 import luceroraul12.challenge.automation.dto.ProductoDto;
 import luceroraul12.challenge.automation.dto.ProductoStock;
-import luceroraul12.challenge.automation.entity.Producto;
+import luceroraul12.challenge.automation.dto.TipoProductoDto;
 import luceroraul12.challenge.automation.repository.ProductoRepository;
 import luceroraul12.challenge.automation.repository.TipoProductoRepository;
 
@@ -23,6 +24,9 @@ public class ProductoServiceImpl implements ProductoService{
 	
 	@Autowired
 	private ProductoConverter productoConverter;
+	
+	@Autowired
+	private TipoProductoConverter tipoProductoConverter;
 	
 	
 
@@ -53,6 +57,11 @@ public class ProductoServiceImpl implements ProductoService{
 	public List<ProductoStock> obtenerStockProductos() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<TipoProductoDto> obtenerTipoProductos() {
+		return tipoProductoConverter.toDtoList(tipoProductoRepository.findAll());
 	}
 
 }

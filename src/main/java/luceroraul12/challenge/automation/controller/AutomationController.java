@@ -3,6 +3,7 @@ package luceroraul12.challenge.automation.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,8 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 import jakarta.websocket.server.PathParam;
 import luceroraul12.challenge.automation.dto.ProductoDto;
 import luceroraul12.challenge.automation.dto.ProductoStock;
+import luceroraul12.challenge.automation.dto.TipoProductoDto;
 import luceroraul12.challenge.automation.service.ProductoService;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/automation")
 public class AutomationController {
@@ -46,6 +49,11 @@ public class AutomationController {
 	@GetMapping("/stock")
 	public List<ProductoStock> obtenerStockProductos() {
 		return service.obtenerStockProductos();
+	}
+	
+	@GetMapping("/tipoProducto")
+	public List<TipoProductoDto> obtenerTipoProductos() {
+		return service.obtenerTipoProductos();
 	}
 	
 }

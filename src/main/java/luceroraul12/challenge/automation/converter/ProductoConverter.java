@@ -2,6 +2,7 @@ package luceroraul12.challenge.automation.converter;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import luceroraul12.challenge.automation.dto.ProductoDto;
@@ -9,12 +10,17 @@ import luceroraul12.challenge.automation.entity.Producto;
 
 @Component
 public class ProductoConverter {
+	
+	@Autowired
+	private TipoProductoConverter tpoProductoConverter;
+	
+	
 	public ProductoDto toDto(Producto p) {
 		ProductoDto dto = new ProductoDto();
 		dto.setId(p.getId());
 		dto.setNombre(p.getNombre());
 		dto.setPrecio(p.getPrecio());
-		dto.setTipo(p.getTipoProducto().getDescripcion());
+		dto.setTipo(tpoProductoConverter.toDto(p.getTipoProducto()));
 		return dto;
 	}
 	
