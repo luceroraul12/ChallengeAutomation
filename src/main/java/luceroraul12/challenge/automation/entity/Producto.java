@@ -23,7 +23,7 @@ public class Producto {
 	private String nombre;
 	@Column
 	private Double precio;
-	@ManyToOne
+    @ManyToOne
 	@JoinColumn(name = "id_tipo_producto")
 	private TipoProducto tipoProducto;
 }
