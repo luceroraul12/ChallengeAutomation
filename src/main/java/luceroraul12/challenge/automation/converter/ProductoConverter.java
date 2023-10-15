@@ -29,6 +29,7 @@ public class ProductoConverter {
 		e.setId(dto.getId());
 		e.setNombre(dto.getNombre());
 		e.setPrecio(dto.getPrecio());
+		e.setTipoProducto(tpoProductoConverter.toEntity(dto.getTipo()));
 		return e;
 	}
 	
