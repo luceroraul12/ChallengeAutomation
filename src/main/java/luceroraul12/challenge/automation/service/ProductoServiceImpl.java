@@ -90,6 +90,26 @@ public class ProductoServiceImpl implements ProductoService{
 		List<StockProducto> stocks = stockProductoRepository.findAll();
 		return productoStockConverter.toContratoList(stocks);
 	}
+	
+	@Override
+	public ProductoStockDto actualizarStockProducto(ProductoStockDto dto) throws Exception{
+		// Valido dto
+		if(dto == null)
+			throw new Exception("Nos debe pasar el stock que se quiere actualizar.");
+		if(dto.getId() == null)
+			throw new Exception("Nos debe pasar el identificador del stock a actualizar");
+		if(dto.getCantidad() == null)
+			throw new Exception("Nos debe pasar la cantidad de producto a la que se quiere actualizar");
+		// Valido que exista
+		StockProducto oldStock = stockProductoRepository.findById(dto.getId()).orElse(null);
+		if(oldStock == null)
+			throw new Exception("El stock que quiere actualizar no existe en la base de datos");
+		
+		// En la actualizacion solo voy a actualizar las cantidades
+		oldStock.setCantidad(dto.getCantidad());
+		stockProductoRepository.save(oldStock);
+		return productoStockConverter.toContrato(oldStock);
+	}
 
 	@Override
 	public List<TipoProductoDto> obtenerTipoProductos() {
@@ -111,4 +131,6 @@ public class ProductoServiceImpl implements ProductoService{
 		if(dto.getTipo() == null)
 			throw new Exception("Nos debe pasar el tipo de producto");
 	}
+
+	
 }

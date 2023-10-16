@@ -18,4 +18,6 @@ public interface ProductoService {
 	public List<ProductoStockDto> obtenerStockProductos();
 
 	public List<TipoProductoDto> obtenerTipoProductos();
+
+	public ProductoStockDto actualizarStockProducto(ProductoStockDto dto) throws Exception;
 }

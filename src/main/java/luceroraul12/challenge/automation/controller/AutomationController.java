@@ -55,6 +55,12 @@ public class AutomationController {
 		return service.obtenerStockProductos();
 	}
 
+	@PutMapping("/stock")
+	public ProductoStockDto actualizarStockProducto(
+			@RequestBody ProductoStockDto dto) throws Exception {
+		return service.actualizarStockProducto(dto);
+	}
+
 	@GetMapping("/tipoProducto")
 	public List<TipoProductoDto> obtenerTipoProductos() {
 		return service.obtenerTipoProductos();
