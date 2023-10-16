@@ -9,9 +9,10 @@ import luceroraul12.challenge.automation.converter.ProductoConverter;
 import luceroraul12.challenge.automation.converter.ProductoStockConverter;
 import luceroraul12.challenge.automation.converter.TipoProductoConverter;
 import luceroraul12.challenge.automation.dto.ProductoDto;
-import luceroraul12.challenge.automation.dto.ProductoStock;
+import luceroraul12.challenge.automation.dto.ProductoStockDto;
 import luceroraul12.challenge.automation.dto.TipoProductoDto;
 import luceroraul12.challenge.automation.entity.Producto;
+import luceroraul12.challenge.automation.entity.StockProducto;
 import luceroraul12.challenge.automation.repository.ProductoRepository;
 import luceroraul12.challenge.automation.repository.StockProductoRepository;
 import luceroraul12.challenge.automation.repository.TipoProductoRepository;
@@ -41,7 +42,7 @@ public class ProductoServiceImpl implements ProductoService{
 
 	@Override
 	public List<ProductoDto> obtenerProductos() {
-		return productoConverter.toDtoList(productoRepository.findAll());
+		return productoConverter.toContratoList(productoRepository.findAll());
 	}
 
 	@Override
@@ -49,11 +50,11 @@ public class ProductoServiceImpl implements ProductoService{
 		// Valido
 		validarProductoDto(dto);
 		// Convierto
-		Producto producto = productoConverter.toEntity(dto);
+		Producto producto = productoConverter.toEntidad(dto);
 		// Persisto
 		producto = productoRepository.save(producto);
 		
-		return productoConverter.toDto(producto);
+		return productoConverter.toContrato(producto);
 	}
 
 	@Override
@@ -63,12 +64,16 @@ public class ProductoServiceImpl implements ProductoService{
 		// Valido que contenga identificador
 		if(dto.getId() == null)
 			throw new Exception("Nos debe pasar el identificador del producto a modificar");
+		// Valido que exista en la base de datos
+		Producto oldProducto = productoRepository.findById(dto.getId()).orElse(null);
+		if(oldProducto == null)
+			throw new Exception("El producto que se quiere modificar no existe en la base de datos");
 		// Convierto
-		Producto producto = productoConverter.toEntity(dto);
+		Producto producto = productoConverter.toEntidad(dto);
 		// Persisto
 		producto = productoRepository.save(producto);
 		
-		return productoConverter.toDto(producto);
+		return productoConverter.toContrato(producto);
 	}
 
 	@Override
@@ -81,9 +86,9 @@ public class ProductoServiceImpl implements ProductoService{
 	}
 
 	@Override
-	public List<ProductoStock> obtenerStockProductos() {
-		stockProductoRepository.findAll();
-		return null;
+	public List<ProductoStockDto> obtenerStockProductos() {
+		List<StockProducto> stocks = stockProductoRepository.findAll();
+		return productoStockConverter.toContratoList(stocks);
 	}
 
 	@Override
