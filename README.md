@@ -1,6 +1,6 @@
 # ChallengeAutomation
 ## Base de datos
-Se crea script **challenge-automation.sql** que se encuentra en /ChallengeAutomation/src/main/resources/database/challenge_automation.sql
+Se crea script **challenge-automation.sql** utilizando un motor de base de datos postgresql que se encuentra en /ChallengeAutomation/src/main/resources/database/challenge_automation.sql
 ### Creación
 - Creacion de base de datos: test
 - Creación de tablas:
