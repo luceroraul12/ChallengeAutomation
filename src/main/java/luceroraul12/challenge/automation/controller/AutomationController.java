@@ -44,7 +44,7 @@ public class AutomationController {
 
 	@DeleteMapping("/producto/{idProducto}")
 	public Integer eliminarProducto(@PathVariable(value = "idProducto") Integer idProducto) throws Exception {
-		return service.eliminarProducto(idProducto);
+11		return service.eliminarProducto(idProducto);
 	}
 	
 	@GetMapping("/stock")
